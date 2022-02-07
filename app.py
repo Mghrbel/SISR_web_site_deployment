@@ -131,9 +131,5 @@ def uploading() :
             flash('Allowed image types are - png, jpg, jpeg')
             return redirect(request.url)
 
-@app.route('/display/<filename>')
-def display_image(filename):
-    return redirect(url_for("..", filename = "tmp/" + filename), code=301)
-
 if __name__ == "__main__" :
    app.run()
