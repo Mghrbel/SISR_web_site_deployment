@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form action="https://thesuperme.herokuapp.com/" method="POST" enctype="multipart/form-data">
+        <div class="title">Powerful AI to Increase Image Resolution</div>
+        <div class="sub_title">100% Automatic and Fast</div>
+        <input id="b1" class="upload" type="file" name="file" accept="image/*">
+        <label class="upload" for="b1">
+            Upload Image
+        </label>
+        <button id="b2" class="upload" type="submit" name="submit" style="vertical-align:middle"><span>Convert</span></button>
+
+        <div class="images">
+            <div class="lr"> <img id="lr" src="/static/uploads/{{lr_image}}" alt="lr not found"> </div>
+            <div class="hr" id="hr_div"></div>
+        </div>
+    </form>
+
+    <script>
+        let lr = document.getElementById("lr")
+        let hr = document.createElement('img')
+        let image_div = document.getElementById("hr_div")
+        lr.onload = function(){
+            hr.src = "/static/uploads/{{hr_image}}"
+            hr.alt = "hr not found"
+            hr.width = lr.width
+            hr.height = lr.height
+            console.log("lr image height ",lr.height)
+            console.log("hr image height ",hr.height)
+            image_div.appendChild(hr)
+        }
+    </script>
+
+{% endblock %}
